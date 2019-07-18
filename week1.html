@@ -1,0 +1,45 @@
+<p id="result"  style="font-weight:bold;font-size: 40px;">NUMBER GUESSING GAME</p>
+<input type="number"id="number">
+<button onclick="myFunction()">Guess</button>
+<button type="button" id="reloadpage"  onclick="refreshPage()">New Game </button>
+<h4 id="pastResult">PAST RESULT :</h4>
+<p id="demo"></p>
+<script>
+ let min=1;
+ let max=100;
+ let yourRandomNuber = Math.ceil(Math.random()*(+max - +min)) + +min;
+ let pastResult ='';
+ let count = 10;
+ function refreshPage()
+    {
+        window.location.reload(true);
+    }
+    function myFunction(){
+        count--;
+        
+
+ let yourInput = document.getElementById('number').value;
+        if(yourInput==yourRandomNuber)
+
+        
+        {
+            document.getElementById('result').innerHTML='correct. you have '+count+' left';
+            document.getElementById('result').style.backgroundColor='green';
+        }else if(yourInput<yourRandomNuber){
+           
+            document.getElementById('result').innerHTML='your number is too low. you have '+count+' left ';
+            document.getElementById('result').style.backgroundColor='red';
+
+        }else if(yourInput>yourRandomNuber){
+           
+            document.getElementById('result').innerHTML='your number is too hight. you have '+count+' left ';
+            document.getElementById('result').style.backgroundColor='red';
+        }
+        if(count==0){
+            alert('you lose. your correct number is'+yourRandomNuber);
+            location.reload();
+        }
+        pastResult= pastResult + yourInput +'<br>';
+        document.getElementById('pastResult').innerHTML= pastResult;
+    }
+</script>
